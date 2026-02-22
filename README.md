@@ -305,7 +305,7 @@ python -m scripts.stt_processor --file audio.ogg --verbose
 For contributors who want to work with the source directly:
 
 ```bash
-git clone https://github.com/sergei-mikhailov/sergei-mikhailov-stt.git
+git clone https://github.com/bzSega/sergei-mikhailov-stt.git
 cd sergei-mikhailov-stt
 pip install -r requirements.txt
 cp assets/.env.example .env
@@ -330,9 +330,9 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## Author
 
-**Sergei Mikhailov** — [github.com/sergei-mikhailov](https://github.com/sergei-mikhailov)
+**Sergei Mikhailov** — [github.com/bzSega](https://github.com/bzSega)
 
-Issues: [github.com/sergei-mikhailov/sergei-mikhailov-stt/issues](https://github.com/sergei-mikhailov/sergei-mikhailov-stt/issues)
+Issues: [github.com/bzSega/sergei-mikhailov-stt/issues](https://github.com/bzSega/sergei-mikhailov-stt/issues)
 
 ## Acknowledgements
 
