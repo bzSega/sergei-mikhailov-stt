@@ -65,10 +65,16 @@ The skill will be placed at `./skills/sergei-mikhailov-stt/`.
 
 ### 2. Install Python dependencies
 
+Navigate to the installed skill folder and install dependencies into a virtual environment:
+
 ```bash
-cd skills/sergei-mikhailov-stt
+cd ~/.openclaw/workspace/skills/sergei-mikhailov-stt
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+> On modern Debian/Ubuntu systems (Python 3.12+), installing packages system-wide is restricted. Use the virtual environment as shown above.
 
 ## Configuration
 
