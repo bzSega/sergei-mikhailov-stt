@@ -61,7 +61,7 @@ Example path from OpenClaw:
 clawhub install sergei-mikhailov-stt
 ```
 
-The skill will be placed at `./skills/sergei-mikhailov-stt/`.
+The skill will be placed at `~/.openclaw/workspace/skills/sergei-mikhailov-stt/`.
 
 ### 2. Install Python dependencies
 
