@@ -116,7 +116,13 @@ YANDEX_FOLDER_ID=your_folder_id_here
 STT_DEFAULT_PROVIDER=yandex
 ```
 
-### 3. Provider configuration (optional)
+### 3. Restart OpenClaw to apply changes
+
+```bash
+openclaw gateway stop && openclaw gateway start
+```
+
+### 4. Provider configuration (optional)
 In `config.json`, set parameters for each provider:
 ```json
 {
