@@ -69,6 +69,15 @@ Navigate to the installed skill folder and install dependencies into a virtual e
 
 ```bash
 cd ~/.openclaw/workspace/skills/sergei-mikhailov-stt
+```
+
+On Debian/Ubuntu, first install the venv package if not already present:
+```bash
+sudo apt install python3-venv
+```
+
+Then create and activate the virtual environment:
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
