@@ -53,24 +53,55 @@ Example path from OpenClaw:
 - Include the detected language
 - Provide metadata if needed
 
-## Configuration
+## Installation
 
-### 1. Basic setup
-Copy configuration files:
+### 1. Install the skill
+
 ```bash
-cp assets/config.example.json config.json
-cp assets/.env.example .env
+clawhub install sergei-mikhailov-stt
 ```
 
-### 2. Set API keys
-Edit the `.env` file:
+The skill will be placed at `./skills/sergei-mikhailov-stt/`.
+
+### 2. Install Python dependencies
+
+```bash
+cd skills/sergei-mikhailov-stt
+pip install -r requirements.txt
+```
+
+## Configuration
+
+### 1. Set API keys (recommended — via OpenClaw config)
+
+Add credentials to `~/.openclaw/openclaw.json`:
+```json
+{
+  "skills": {
+    "entries": {
+      "sergei-mikhailov-stt": {
+        "env": {
+          "YANDEX_API_KEY": "your_api_key_here",
+          "YANDEX_FOLDER_ID": "your_folder_id_here"
+        }
+      }
+    }
+  }
+}
+```
+
+### 2. Alternative — via `.env` file
+Copy and edit the example file inside the skill folder:
+```bash
+cp assets/.env.example .env
+```
 ```
 YANDEX_API_KEY=your_api_key_here
 YANDEX_FOLDER_ID=your_folder_id_here
 STT_DEFAULT_PROVIDER=yandex
 ```
 
-### 3. Provider configuration
+### 3. Provider configuration (optional)
 In `config.json`, set parameters for each provider:
 ```json
 {
