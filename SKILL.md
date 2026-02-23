@@ -204,17 +204,24 @@ Provider: Yandex SpeechKit
 
 ## Error Handling
 
-### Common Errors
-- **File too large**: Maximum size is 50 MB (Yandex v1 sync API limit is 1 MB per request)
-- **Unsupported format**: Supported formats are OGG, WAV, MP3, M4A, FLAC, AAC
-- **API error**: Check provider configuration and API key validity
-- **Low audio quality**: Try improving recording quality
+When the skill returns an error, explain it to the user in plain language and suggest a concrete next step. Do not show raw error messages or stack traces.
 
-### Troubleshooting
-1. Verify API key configuration
-2. Ensure ffmpeg is installed and accessible
-3. Check STT service availability
-4. Try a different provider
+| Error | Say to the user | Next step |
+|-------|----------------|-----------|
+| `File too large` | "The voice message is too long — maximum is about 30 seconds for now." | Ask them to send a shorter message |
+| `Unsupported format` | "This audio format is not supported." | Tell them supported formats: OGG, WAV, MP3, M4A, FLAC, AAC |
+| `API key invalid / HTTP 401` | "There's a problem with the Yandex SpeechKit API key." | Ask owner to check `YANDEX_API_KEY` in openclaw.json |
+| `Folder access denied / HTTP 403` | "Access to Yandex SpeechKit is denied." | Ask owner to verify the service account has `ai.speechkit.user` role |
+| `Too many requests / HTTP 429` | "Yandex SpeechKit is rate-limiting us right now." | Try again in a few seconds |
+| `FFmpeg not found` | "Audio conversion tool (FFmpeg) is not installed on the server." | Owner needs to run `brew install ffmpeg` or `apt install ffmpeg` |
+| `API request timed out` | "Yandex SpeechKit did not respond in time." | Try again; if it repeats, the service may be down |
+| `Missing YANDEX_API_KEY` | "The skill is not configured yet — API keys are missing." | Owner needs to add keys to `~/.openclaw/openclaw.json` |
+
+### Troubleshooting (for the owner)
+1. Verify API key configuration in `~/.openclaw/openclaw.json`
+2. Ensure ffmpeg is installed: `ffmpeg -version`
+3. Check Yandex Cloud service account has role `ai.speechkit.user`
+4. Check gateway logs: `openclaw logs`
 
 ## Limitations
 

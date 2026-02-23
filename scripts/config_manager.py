@@ -11,6 +11,7 @@ This module handles:
 """
 
 import json
+import logging
 import os
 from pathlib import Path
 from typing import Dict, Any
@@ -18,6 +19,8 @@ from typing import Dict, Any
 from dotenv import load_dotenv
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 
 class ConfigManager:
@@ -65,14 +68,14 @@ class ConfigManager:
             if os.path.exists(config_path):
                 with open(config_path, 'r', encoding='utf-8') as f:
                     json_config = json.load(f)
-                print(f"Configuration loaded from file: {config_path}")
+                logger.info(f"Configuration loaded from file: {config_path}")
             else:
-                print(f"Configuration file not found: {config_path}")
+                logger.warning(f"Configuration file not found: {config_path}")
         except json.JSONDecodeError as e:
-            print(f"Failed to parse JSON file {config_path}: {e}")
+            logger.error(f"Failed to parse JSON file {config_path}: {e}")
             raise
         except Exception as e:
-            print(f"Error loading configuration from {config_path}: {e}")
+            logger.error(f"Error loading configuration from {config_path}: {e}")
             raise
 
         env_config = self.load_from_env()
@@ -106,7 +109,7 @@ class ConfigManager:
         env_config = self._remove_none_values(env_config)
 
         if env_config:
-            print("Configuration loaded from environment variables")
+            logger.info("Configuration loaded from environment variables")
 
         return env_config
 
@@ -134,7 +137,7 @@ class ConfigManager:
 
         merged = deep_merge(merged, env_config)
 
-        print("Configurations merged (environment variables take priority)")
+        logger.debug("Configurations merged (environment variables take priority)")
         return merged
 
     def validate_config(self, config: Dict[str, Any]) -> bool:
@@ -148,21 +151,21 @@ class ConfigManager:
             bool: True if the configuration is valid, False otherwise
         """
         if not isinstance(config, dict):
-            print("Configuration must be a dictionary")
+            logger.error("Configuration must be a dictionary")
             return False
 
         if "default_provider" not in config or not config["default_provider"]:
-            print("Missing or empty field: default_provider")
+            logger.error("Missing or empty field: default_provider")
             return False
 
         default_provider = config["default_provider"]
 
         if "providers" not in config or not isinstance(config["providers"], dict):
-            print("Missing or invalid providers section")
+            logger.error("Missing or invalid providers section")
             return False
 
         if default_provider not in config["providers"]:
-            print(f"No configuration found for provider: {default_provider}")
+            logger.error(f"No configuration found for provider: {default_provider}")
             return False
 
         provider_config = config["providers"][default_provider]
@@ -171,7 +174,7 @@ class ConfigManager:
             if not self._validate_yandex_config(provider_config):
                 return False
 
-        print(f"Configuration valid for provider: {default_provider}")
+        logger.info(f"Configuration valid for provider: {default_provider}")
         return True
 
     def _validate_yandex_config(self, config: Dict[str, Any]) -> bool:
@@ -188,7 +191,7 @@ class ConfigManager:
 
         for field in required_fields:
             if field not in config or not config[field]:
-                print(f"Missing or empty required Yandex field: {field}")
+                logger.error(f"Missing or empty required Yandex field: {field}")
                 return False
 
         return True
@@ -235,7 +238,7 @@ class ConfigManager:
 
         Path(temp_dir).mkdir(parents=True, exist_ok=True)
 
-        print(f"Temporary directory created/verified: {temp_dir}")
+        logger.debug(f"Temporary directory created/verified: {temp_dir}")
         return temp_dir
 
     def _remove_none_values(self, d: Dict[str, Any]) -> Dict[str, Any]:
