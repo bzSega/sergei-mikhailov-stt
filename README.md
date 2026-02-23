@@ -4,9 +4,9 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-green.svg)](https://openclaw.ai)
 
-An OpenClaw skill that transcribes Telegram voice messages to text using Yandex SpeechKit (with an extensible architecture for other providers).
+An OpenClaw skill that transcribes voice messages to text using Yandex SpeechKit (with an extensible architecture for other providers).
 
-OpenClaw receives the voice file from Telegram, saves it locally, and passes the path to this skill. The skill converts audio to text and returns the result.
+Works with any messenger connected to OpenClaw. OpenClaw receives the voice file, saves it locally, and passes the path to this skill. The skill converts audio to text and returns the result.
 
 Example path OpenClaw provides:
 ```
@@ -141,7 +141,7 @@ Edit `config.json` and fill in `api_key` and `folder_id` under the `yandex` prov
 
 Once installed and configured, start a new OpenClaw session. The skill activates automatically when you:
 
-- Send a voice message in Telegram while OpenClaw is connected
+- Send a voice message via any messenger while OpenClaw is connected
 - Ask the assistant to transcribe a voice message
 - Provide a path to an audio file for transcription
 
@@ -177,7 +177,7 @@ Then start a new OpenClaw session to pick up the update.
 ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
 │   OpenClaw      │───▶│  STT Processor   │───▶│  STT Provider   │
 │                 │    │                  │    │                 │
-│ • Telegram API  │    │ • Audio Handler  │    │ • Yandex API    │
+│ • Messenger API │    │ • Audio Handler  │    │ • Yandex API    │
 │ • File Manager  │    │ • Config Manager │    │ • (extensible)  │
 │ • Skill Router  │    │ • Error Handler  │    │                 │
 └─────────────────┘    └──────────────────┘    └─────────────────┘

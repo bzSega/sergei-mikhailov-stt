@@ -1,26 +1,19 @@
 ---
 name: sergei-mikhailov-stt
-description: Speech recognition from Telegram voice messages. Use when you need to convert a Telegram voice message to text.
-metadata:
-  requires:
-    bins:
-      - ffmpeg
-      - python3
-    env:
-      - YANDEX_API_KEY
-      - YANDEX_FOLDER_ID
+description: Speech recognition from voice messages. Use when you need to convert a voice message to text.
+metadata: {"openclaw": {"requires": {"bins": ["ffmpeg", "python3"], "env": ["YANDEX_API_KEY", "YANDEX_FOLDER_ID"]}, "primaryEnv": "YANDEX_API_KEY"}}
 ---
 
-# Telegram STT Skill
+# Speech to Text Skill for OpenClaw
 
 ## Purpose
 
-This skill recognizes speech from Telegram voice messages using various STT providers, including Yandex SpeechKit.
+This skill recognizes speech from voice messages sent via any messenger connected to OpenClaw, using various STT providers, including Yandex SpeechKit.
 
 ## When to Activate
 
 Use this skill when:
-- The user sends a voice message in Telegram
+- The user sends a voice message via any messenger connected to OpenClaw
 - You need to convert speech to text
 - Audio file transcription is required
 - A text version of a voice message is needed
