@@ -1,7 +1,14 @@
 ---
 name: sergei-mikhailov-stt
 description: Speech recognition from Telegram voice messages. Use when you need to convert a Telegram voice message to text.
-metadata: {"requires": {"bins": ["ffmpeg", "python3"], "env": ["YANDEX_API_KEY", "YANDEX_FOLDER_ID"]}}
+metadata:
+  requires:
+    bins:
+      - ffmpeg
+      - python3
+    env:
+      - YANDEX_API_KEY
+      - YANDEX_FOLDER_ID
 ---
 
 # Telegram STT Skill
