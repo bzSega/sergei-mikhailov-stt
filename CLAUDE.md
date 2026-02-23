@@ -2,11 +2,22 @@
 
 ## Reference Documentation
 
-When working on this project, always consult the official OpenClaw documentation:
+Before answering any question about ClawHub commands, SKILL.md format, or skill configuration — fetch and read the relevant documentation page first:
 
-- https://docs.openclaw.ai/tools/clawhub — ClawHub registry, publishing, and metadata format
+- https://docs.openclaw.ai/tools/clawhub — ClawHub CLI commands (install, update, list, publish, etc.)
 - https://docs.openclaw.ai/tools/skills — SKILL.md structure and frontmatter spec
 - https://docs.openclaw.ai/tools/skills-config — skill configuration and openclaw.json
+
+### ClawHub CLI reference (from docs)
+
+```
+clawhub install <slug>
+clawhub update <slug>
+clawhub update --all
+clawhub update --version <version>   # single slug only
+clawhub update --force               # overwrite when local files don't match published version
+clawhub list                         # reads .clawhub/lock.json
+```
 
 ## Key conventions
 
