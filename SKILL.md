@@ -24,7 +24,7 @@ Use this skill when:
 - OpenClaw provides a local path to the audio file
 - Verify the file exists at the given path
 - Validate the file format (OGG, WAV, MP3)
-- Check file size (maximum 50 MB)
+- Check file size (maximum 1 MB for Yandex SpeechKit v1 sync API)
 
 Example path from OpenClaw:
 ```
@@ -218,8 +218,7 @@ When the skill returns an error, explain it to the user in plain language and su
 
 ## Limitations
 
-- Maximum file size: 50 MB
-- Yandex SpeechKit v1 sync API limit: 1 MB per request
+- Maximum file size: 1 MB (Yandex SpeechKit v1 sync API limit, ~30 seconds of voice)
 - Supported formats: OGG, WAV, MP3, M4A, FLAC, AAC
 - Languages: Russian (ru-RU), English (en-US)
 - Processing time: up to 5 minutes

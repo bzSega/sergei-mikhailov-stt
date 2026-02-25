@@ -18,7 +18,12 @@ from typing import Dict, Any
 
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env only from the skill root directory (parent of scripts/),
+# not from an arbitrary working directory.
+_skill_root = Path(__file__).resolve().parent.parent
+_dotenv_path = _skill_root / ".env"
+if _dotenv_path.is_file():
+    load_dotenv(_dotenv_path)
 
 logger = logging.getLogger(__name__)
 
