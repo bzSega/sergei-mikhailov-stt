@@ -1,6 +1,6 @@
 ---
 name: sergei-mikhailov-stt
-description: Speech recognition from voice messages. Use when you need to convert a voice message to text.
+description: Speech recognition from voice messages using Yandex SpeechKit (with an extensible architecture for other providers). Use when you need to convert a voice message to text.
 metadata: {"openclaw": {"requires": {"bins": ["ffmpeg", "python3"], "env": ["YANDEX_API_KEY", "YANDEX_FOLDER_ID"]}, "primaryEnv": "YANDEX_API_KEY"}}
 ---
 
@@ -46,37 +46,17 @@ Example path from OpenClaw:
 - Include the detected language
 - Provide metadata if needed
 
-## Installation
-
-### 1. Install the skill
+## Quick Start
 
 ```bash
 clawhub install sergei-mikhailov-stt
-```
-
-The skill will be placed at `~/.openclaw/workspace/skills/sergei-mikhailov-stt/`.
-
-### 2. Install Python dependencies
-
-Navigate to the installed skill folder and install dependencies into a virtual environment:
-
-```bash
 cd ~/.openclaw/workspace/skills/sergei-mikhailov-stt
+bash setup.sh
 ```
 
-On Debian/Ubuntu, first install the venv package if not already present:
-```bash
-sudo apt install python3-venv
-```
+The setup script creates a Python virtual environment, installs dependencies, and copies example configuration files. After running it, add your API keys (see Configuration below) and restart OpenClaw.
 
-Then create and activate the virtual environment:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-> On modern Debian/Ubuntu systems (Python 3.12+), installing packages system-wide is restricted. Use the virtual environment as shown above.
+> On Debian/Ubuntu, you may need to install the venv package first: `sudo apt install python3-venv`
 
 ## Configuration
 
@@ -99,10 +79,7 @@ Add credentials to `~/.openclaw/openclaw.json`:
 ```
 
 ### 2. Alternative — via `.env` file
-Copy and edit the example file inside the skill folder:
-```bash
-cp assets/.env.example .env
-```
+Edit the `.env` file created by `setup.sh` in the skill folder:
 ```
 YANDEX_API_KEY=your_api_key_here
 YANDEX_FOLDER_ID=your_folder_id_here
@@ -116,7 +93,7 @@ openclaw gateway stop && openclaw gateway start
 ```
 
 ### 4. Provider configuration (optional)
-In `config.json`, set parameters for each provider:
+The `config.json` file (also created by `setup.sh`) lets you tune provider parameters:
 ```json
 {
   "default_provider": "yandex",
