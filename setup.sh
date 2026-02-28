@@ -21,7 +21,7 @@ echo "Installing Python dependencies..."
 
 # 2. Configuration files
 if [ ! -f ".env" ]; then
-    cp assets/.env.example .env
+    cp assets/env.example .env
     echo "Created .env from template."
 else
     echo ".env already exists, skipping."
