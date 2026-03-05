@@ -1,9 +1,14 @@
 # Project Notes for Claude
 
+## Workflow rules
+
+- **Never** commit, push, or publish to ClawHub without explicit user permission. Always ask first.
+
 ## Reference Documentation
 
 Before answering any question about ClawHub commands, SKILL.md format, or skill configuration — fetch and read the relevant documentation page first:
 
+- https://docs.openclaw.ai/ OpenClaw docs.
 - https://docs.openclaw.ai/tools/clawhub — ClawHub CLI commands (install, update, list, publish, etc.)
 - https://docs.openclaw.ai/tools/skills — SKILL.md structure and frontmatter spec
 - https://docs.openclaw.ai/tools/skills-config — skill configuration and openclaw.json
