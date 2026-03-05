@@ -17,6 +17,14 @@ clawhub update --all
 clawhub update --version <version>   # single slug only
 clawhub update --force               # overwrite when local files don't match published version
 clawhub list                         # reads .clawhub/lock.json
+
+clawhub publish <path>               # publish skill from folder
+  --slug <slug>                      # skill slug (unique ID)
+  --name <name>                      # display name shown in search
+  --version <version>                # semver (e.g. 1.1.3)
+  --changelog <text>                 # changelog text
+  --tags <tags>                      # comma-separated tags (default: "latest")
+  --fork-of <slug[@version]>         # mark as a fork of an existing skill
 ```
 
 ## Key conventions
