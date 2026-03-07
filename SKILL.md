@@ -46,6 +46,16 @@ Example path from OpenClaw:
 - Include the detected language
 - Provide metadata if needed
 
+## Invocation
+
+**Important:** Always call the processor using the absolute path to the script. Do **not** use `cd <skill_dir> && python3 scripts/...` — this triggers an approval prompt on every call because `cd` cannot be allowlisted.
+
+```bash
+python3 /path/to/sergei-mikhailov-stt/scripts/stt_processor.py --file "/path/to/audio.ogg"
+```
+
+The script resolves all paths (config, `.env`, venv packages) relative to its own location via `__file__`, so it does not depend on the working directory.
+
 ## Quick Start
 
 ```bash
